@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if request.user.salesperson %}
+    <div class="col-lg-3 col-md-3 col-sm-12">
+    <h2>Customers Detail</h2>
+        <table class="table table-condensed">
+            <thead>
+                <th>Product Name</th>
+
+            </thead>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{customer}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12">
+    <h2> Transactions Detail</h2>
+        <table class="table table-condensed">
+            <thead>
+                <th>Product</th>
+                <th>Customer</th>
+                <th>Cost</th>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{transaction}}</td>
+                    <td>{{transaction.customer}}</td>
+                    <td>{{transaction.cost}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+  <div class="col-lg-5 col-md-5 col-sm-12">
+    <h2> Products Detail</h2>
+        <table class="table table-condensed">
+            <thead>
+                <th>Product</th>
+                <th>Cost</th>
+                <th>Brand</th>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{product}}</td>
+                    <td>{{product.cost}}</td>
+                    <td>{{product.brand}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% else %}
+    <h3>Welcome Customer user</h3>
+{% endif %}
+
+
+
+
+{% endblock content %}
